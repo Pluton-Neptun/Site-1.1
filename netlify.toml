@@ -1,0 +1,3 @@
+[build]
+  # Указываем Netlify, что наши функции лежат в папке "functions"
+  functions = "functions/"
