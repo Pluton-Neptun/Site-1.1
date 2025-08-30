@@ -1,36 +1,36 @@
 // script.js
-
-// Сразу после загрузки страницы запускаем функцию, чтобы получить данные
-document.addEventListener('DOMContentLoaded', () => {
-    fetchDataAndDisplay();
+document.addEventListener('DOMContentLoaded', () => { 
+    // Запрашиваем пост с id=1 для теста
+    fetchDataAndDisplay(1);
 });
 
-// Асинхронная функция для получения и отображения данных
-async function fetchDataAndDisplay() {
-    // Находим контейнер на странице
+async function fetchDataAndDisplay(postId) {
     const container = document.getElementById('posts-container');
 
     try {
-        // 1. Отправляем запрос на адрес нашей серверной функции
-        const response = await fetch('/.netlify/functions/get-data');
+        // 1. Отправляем запрос, добавив в конец ?id=...
+        const response = await fetch(`/.netlify/functions/get-data?id=${postId}`);
         
-        // 2. Преобразуем ответ из формата JSON в JavaScript-объект
-        const posts = await response.json();
+        // Проверяем, что сервер не вернул ошибку (как 404 или 500)
+        if (!response.ok) {
+            // response.json() тоже вернет ошибку, которую мы обработаем в catch
+            const errorData = await response.json();
+            throw new Error(errorData.error || `Ошибка сервера: ${response.status}`);
+        }
 
-        // Очищаем контейнер от надписи "Загрузка..."
+        // 2. Получаем ОДИН пост (уже не массив)
+        const post = await response.json();
+
         container.innerHTML = '';
 
-        // 3. Отображаем данные на странице
-        posts.forEach(post => {
-            // Предполагая, что в вашей таблице `posts` есть колонка `title`
-            const postElement = document.createElement('p');
-            postElement.textContent = post.title; // Замените 'title' на имя вашей колонки
-            container.appendChild(postElement);
-        });
+        // 3. Отображаем данные одного поста
+        const postElement = document.createElement('h2'); // Сделаем заголовок побольше
+        // Снова предполагаем, что у вас есть колонка 'title'
+        postElement.textContent = post.title; 
+        container.appendChild(postElement);
 
     } catch (error) {
-        // Если произошла ошибка, выводим ее в контейнер
-        container.innerHTML = 'Не удалось загрузить данные.';
+        container.innerHTML = `Ошибка: ${error.message}`;
         console.error('Ошибка при получении данных:', error);
     }
 }
