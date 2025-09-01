@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #ffffff; /* Белый цвет текста */
-     background-image: url('images/background.jpg');
+    background-image: url('images/background.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
