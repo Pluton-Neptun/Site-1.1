@@ -14,14 +14,15 @@ body {
 }
 
 /* Основной контейнер для формы с эффектом размытия */
+
 .form-container {
-    background: rgba(0, 0, 0, 0.4); /* Полупрозрачный тёмный фон */
-    backdrop-filter: blur(15px); /* Эффект размытия "матового стекла" */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 40px;
-    max-width: 600px;
+    max-width: 300px; /* <--- ЭТУ СТРОКУ НАМ НУЖНО ИЗМЕНИТЬ */
     width: 100%;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
