@@ -3,23 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт с данными</title>
+    <title>Заявка на турнир</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Тест загрузка данных</h1>
-    <p>Данные из базы данных:</p>
 
-    <div id="posts-container">Загрузка...</div>
+    <div class="form-container">
+        <h1>Тестовый сайт для игроков и больших команд</h1>
 
-    <script src="script.js"></script>
-    <hr>
-<footer>
-  <p>Наш телефон для связи: </p>
-</footer>
-<h2>Отзывы наших клиентов</h2>
-<div id="reviews-container">
-  <p>Загрузка отзывов...</p>
-</div>
-</body>
-</html> 
+        <form>
+            <div class="form-group">
+                <label for="name">Имя или псевдоним</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Номер телефона оставьте или сами позвоните</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="days">в Какие дни хотите</label>
+                <input type="text" id="days" name="days">
+            </div>
+
+            <div class="form-group">
+                <label for="price">цена которая вас устроит</label>
+                <input type="number" id="price" name="price">
+            </div>
+
+            <div class="form-group">
+                <label for="team-wait">если есть команда можете подождать другую команду</label>
+                <input type="text" id="team-wait" name="team-wait">
+            </div>
+
+            <div class="form-group">
+                <label for="tournament-type">будете делать турнир или хотите по одиночному</label>
+                <input type="text" id="tournament-type" name="tournament-type">
+            </div>
+
+            <button type="submit">Отправить заявку</button>
+        </form>
+    </div>
+
+    </body>
+</html>

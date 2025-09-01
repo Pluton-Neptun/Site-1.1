@@ -1,14 +1,84 @@
+/* Убираем стандартные отступы и настраиваем фон */
 body {
-    font-family: sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff; /* Белый цвет текста */
+    background-image: url('https://images.unsplash.com/photo-1542781534-1563f4a303d2'); /* Красивый фон, похожий на ваш */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    padding: 20px;
 }
 
+/* Основной контейнер для формы с эффектом размытия */
+.form-container {
+    background: rgba(0, 0, 0, 0.4); /* Полупрозрачный тёмный фон */
+    backdrop-filter: blur(15px); /* Эффект размытия "матового стекла" */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для заголовка */
 h1 {
-    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/* Группа для метки и поля ввода */
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* Стили для текста над полем ввода */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Стили для самих полей ввода (окошек) */
+input[type="text"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Стили для кнопки отправки */
+button {
+    width: 100%;
+    padding: 15px;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
