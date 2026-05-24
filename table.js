@@ -37,4 +37,4 @@ async function loadApplications() {
         console.error(error);
         tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;">Ошибка загрузки данных</td></tr>';
     }
-}
+} 
