@@ -86,3 +86,62 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+/* --- Стили для страницы с таблицей --- */
+
+/* Контейнер для таблицы (делаем его шире, чем форму) */
+.table-container {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 700px; /* Таблица должна быть шире формы */
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили самой таблицы */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse; /* Убирает двойные рамки */
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+/* Шапка таблицы */
+.styled-table th {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Ячейки строк */
+.styled-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    height: 24px; /* Фиксированная высота для пустых строк */
+}
+
+/* Эффект подсветки строки при наведении мыши */
+.styled-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Кнопка возврата назад */
+.back-btn {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+    color: #ffffff;
+}
