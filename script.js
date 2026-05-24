@@ -75,7 +75,46 @@ async function fetchReviewsAndDisplay() {
         console.error(error);
     }
 }
+// Добавьте этот код в ваш script.js
 
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
+    
+    if (form) {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Останавливаем перезагрузку страницы
+
+            // Собираем данные из полей формы
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                days: document.getElementById('days').value,
+                price: document.getElementById('price').value,
+                teamWait: document.getElementById('team-wait').value,
+                tournamentType: document.getElementById('tournament-type').value
+            };
+
+            try {
+                // Отправляем данные в нашу новую Netlify-функцию
+                const response = await fetch('/.netlify/functions/submit-app', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Заявка успешно отправлена!');
+                    form.reset(); // Очищаем форму после отправки
+                } else {
+                    alert('Ошибка при отправке заявки.');
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Не удалось связаться с сервером.');
+            }
+        });
+    }
+});
 
 
 
