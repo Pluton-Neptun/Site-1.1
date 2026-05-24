@@ -145,3 +145,24 @@ button:hover {
 .back-btn:hover {
     color: #ffffff;
 }
+
+/* --- Стили для кнопки "Вход" на главной странице --- */
+.enter-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none; /* Убираем стандартное подчеркивание ссылки */
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Эффект при наведении курсора */
+.enter-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
