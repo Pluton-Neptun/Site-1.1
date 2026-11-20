@@ -116,11 +116,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("rouletteBtn");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      window.location.href = "roulette.html";
+  if (!btn) return;
+
+  let isLaunching = false;
+
+  btn.addEventListener("click", () => {
+    if (isLaunching) return;
+    isLaunching = true;
+
+    // Запускаем 3 самолёта на разной высоте
+    const planeHeights = ["12%", "26%", "40%"];
+    planeHeights.forEach((topPos, index) => {
+      const plane = document.createElement("img");
+      plane.src = "images/plane.gif";
+      plane.className = "fx-gif-plane";
+      plane.style.top = topPos;
+      plane.style.animationDelay = `${index * 0.25}s`;
+      document.body.appendChild(plane);
     });
-  }
+
+    // Запускаем 2 бегущих динозавров по низу экрана
+    [0, 0.45].forEach((delay, index) => {
+      const dino = document.createElement("img");
+      dino.src = "images/dino.gif";
+      dino.className = "fx-gif-dino";
+      dino.style.bottom = index === 0 ? "24px" : "55px";
+      dino.style.animationDelay = `${delay}s`;
+      document.body.appendChild(dino);
+    });
+
+    // Переход на страницу барабана после пролёта
+    setTimeout(() => {
+      window.location.href = "roulette.html";
+    }, 2800);
+  });
 });

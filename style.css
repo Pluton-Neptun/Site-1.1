@@ -207,3 +207,66 @@ body {
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
 }
+
+
+
+
+
+
+/* === АНИМАЦИЯ GIF-САМОЛЁТОВ И ДИНОЗАВРОВ ПРИ КЛИКЕ === */
+.fx-gif-plane {
+  position: fixed;
+  left: -240px;
+  width: 190px; /* средний размер самолёта */
+  height: auto;
+  z-index: 9999;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.65));
+  animation: flyPlaneAcross 2.6s linear forwards;
+}
+
+.fx-gif-dino {
+  position: fixed;
+  bottom: 24px;
+  left: -260px;
+  width: 210px; /* средний размер динозавра */
+  height: auto;
+  z-index: 9999;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.75));
+  animation: runDinoAcross 2.8s linear forwards;
+}
+
+@keyframes flyPlaneAcross {
+  0% {
+    left: -240px;
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-28px) rotate(2deg);
+  }
+  100% {
+    left: 108vw;
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@keyframes runDinoAcross {
+  0% {
+    left: -260px;
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-12px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-12px);
+  }
+  100% {
+    left: 108vw;
+    transform: translateY(0);
+  }
+}
