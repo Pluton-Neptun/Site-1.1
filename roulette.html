@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рулетка инвестиций и таймер настроений</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Стили для нового листа в единой стилистике сайта */
+    .roulette-card {
+      max-width: 520px;
+      width: 92%;
+      margin: 40px auto;
+      padding: 28px 24px;
+      background: rgba(15, 15, 18, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Блок с деньгами для инвестиций */
+    .invest-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+    .invest-label {
+      font-size: 12px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .invest-amount {
+      font-size: 28px;
+      font-weight: 700;
+      color: #4ade80;
+      margin-top: 4px;
+    }
+
+    /* Таймер настроений */
+    .mood-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mood-timer {
+      font-size: 20px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: #38bdf8;
+    }
+    .mood-status {
+      font-size: 14px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #e0f2fe;
+    }
+
+    /* Барабан (казино / русская рулетка) */
+    .wheel-wrapper {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      margin: 0 auto 22px;
+    }
+    .wheel-pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 22px solid #facc15;
+      z-index: 10;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
+    }
+    canvas#rouletteCanvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .spin-btn {
+      width: 100%;
+      padding: 13px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .spin-btn:hover { background: #0066d6; }
+    .spin-btn:disabled { background: #475569; cursor: not-allowed; }
+
+    .result-banner {
+      min-height: 24px;
+      margin-top: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #facc15;
+    }
+
+    .nav-links {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .nav-link-btn {
+      flex: 1;
+      padding: 9px 12px;
+      font-size: 12px;
+      color: #ccc;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+    .nav-link-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+  </style>
+</head>
+<body style="background: url('images/background.jpg') no-repeat center center fixed; background-size: cover;">
+
+  <div class="roulette-card">
+    <h2 style="margin-top: 0; margin-bottom: 18px;">Инвестиционный барабан</h2>
+
+    <!-- Деньги для инвестиций -->
+    <div class="invest-box">
+      <div class="invest-label">Деньги для инвестиций</div>
+      <div class="invest-amount" id="investBalance">100 000 ₸</div>
+    </div>
+
+    <!-- Таймер настроений -->
+    <div class="mood-box">
+      <div style="text-align: left;">
+        <div class="invest-label">Таймер настроений</div>
+        <div class="mood-timer" id="moodTimer">05:00</div>
+      </div>
+      <div class="mood-status" id="moodLabel">🔥 Азарт и драйв</div>
+    </div>
+
+    <!-- Барабан -->
+    <div class="wheel-wrapper">
+      <div class="wheel-pointer"></div>
+      <canvas id="rouletteCanvas" width="320" height="320"></canvas>
+    </div>
+
+    <button class="spin-btn" id="spinBtn">Крутить барабан</button>
+    <div class="result-banner" id="resultText">Нажмите, чтобы испытать удачу</div>
+
+    <!-- Навигация по листам сайта -->
+    <div class="nav-links">
+      <a href="index.html" class="nav-link-btn">Назад к форме</a>
+      <a href="table.html" class="nav-link-btn">Список заявок</a>
+    </div>
+  </div>
+
+  <script src="roulette.js"></script>
+</body>
+</html>
