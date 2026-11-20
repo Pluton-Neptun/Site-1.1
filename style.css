@@ -150,3 +150,60 @@ body {
     max-width: 420px;
   }
 }
+
+/* === СТИЛИ ДЛЯ СТРАНИЦЫ СПИСКА ЗАЯВОК (table.html) === */
+.table-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 520px;
+  padding: 28px 24px;
+  background: rgba(18, 18, 22, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+}
+
+.table-container h1 {
+  margin: 0 0 20px;
+  font-size: 22px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.styled-table thead tr {
+  background: rgba(255, 255, 255, 0.12);
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
