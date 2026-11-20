@@ -117,68 +117,62 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const actor = document.getElementById("raptorActor");
   const btn = document.getElementById("rouletteBtn");
-  const raptor = document.getElementById("raptorCompanion");
-  const bubble = document.getElementById("raptorBubble");
-  if (!btn || !raptor) return;
+  const phraseEl = document.getElementById("raptorPhrase");
+  const numEl = document.getElementById("raptorReactionNum");
+  if (!actor || !btn) return;
 
   const reactions = [
-    { cls: "react-run",      text: "Бегу к банку!" },
-    { cls: "react-ski",      text: "Лыжный слалом!" },
-    { cls: "react-fire",     text: "Огненный куш!" },
-    { cls: "react-angry",    text: "Р-Р-Р! Ставки вверх!" },
-    { cls: "react-jump",     text: "Сальто хищника!" },
-    { cls: "react-dance",    text: "Танцуем на профит!" },
-    { cls: "react-stealth",  text: "Охота за джекпотом..." },
-    { cls: "react-rich",     text: "Время инвестиций ₸!" },
-    { cls: "react-laser",    text: "Лазерный прицел!" },
-    { cls: "react-tailwhip", text: "Удар хвостом!" }
+    { cls: "react-1",  phrase: "Бегу срывать куш! 🦖",       title: "Реакция №1: Спринт по полю" },
+    { cls: "react-2",  phrase: "Лыжный слалом по сайту! 🎿", title: "Реакция №2: Горные лыжи" },
+    { cls: "react-3",  phrase: "Огненный джекпот! 🔥",       title: "Реакция №3: Огонь изо рта" },
+    { cls: "react-4",  phrase: "Р-Р-Р! Ставки вверх! 🦖",    title: "Реакция №4: Ярость" },
+    { cls: "react-5",  phrase: "Прыжок хищника! ⚡",         title: "Реакция №5: Сальто вверх" },
+    { cls: "react-6",  phrase: "Танцуем на профит! 💃",      title: "Реакция №6: Танец победы" },
+    { cls: "react-7",  phrase: "Выслеживаю крупный банк...", title: "Реакция №7: Засада" },
+    { cls: "react-8",  phrase: "Время инвестиций ₸! 💰",     title: "Реакция №8: Золотой вихрь" },
+    { cls: "react-9",  phrase: "Прицел на максимум! 🎯",     title: "Реакция №9: Лазер из глаз" },
+    { cls: "react-10", phrase: "Разворот хвостом! 🌪️",       title: "Реакция №10: Удар хвостом" }
   ];
 
   let deck = [];
-  let lastIndex = -1;
-  let resetTimer = null;
+  let lastIdx = -1;
+  let timer = null;
 
-  // Берём случайную реакцию без повторения предыдущей
-  function getNextReaction() {
+  function pickNextReaction() {
     if (deck.length === 0) {
       deck = reactions.map((_, i) => i).sort(() => Math.random() - 0.5);
-      if (deck[0] === lastIndex) {
+      if (deck[0] === lastIdx) {
         [deck[0], deck[1]] = [deck[1], deck[0]];
       }
     }
     const idx = deck.shift();
-    lastIndex = idx;
+    lastIdx = idx;
     return reactions[idx];
   }
 
-  function triggerRaptor(redirectAfter = false) {
-    clearTimeout(resetTimer);
-    reactions.forEach(r => raptor.classList.remove(r.cls));
-    void raptor.offsetWidth; // перезапуск CSS-анимации
+  function playReaction(goToRoulette = false) {
+    clearTimeout(timer);
+    reactions.forEach(r => actor.classList.remove(r.cls));
+    void actor.offsetWidth; // сброс анимации
 
-    const chosen = getNextReaction();
-    raptor.classList.add(chosen.cls);
-    bubble.textContent = chosen.text;
-    bubble.classList.add("show");
+    const current = pickNextReaction();
+    actor.classList.add(current.cls);
+    phraseEl.textContent = current.phrase;
+    numEl.textContent = current.title;
 
-    resetTimer = setTimeout(() => {
-      reactions.forEach(r => raptor.classList.remove(r.cls));
-      bubble.classList.remove("show");
-      if (redirectAfter) {
+    timer = setTimeout(() => {
+      reactions.forEach(r => actor.classList.remove(r.cls));
+      if (goToRoulette) {
         window.location.href = "roulette.html";
       }
-    }, 2300);
+    }, 2500);
   }
 
-  // Нажатие на велоцераптора — тест реакций прямо на странице
-  raptor.addEventListener("click", () => triggerRaptor(false));
+  // Клик по велоцераптору — смена реакции на месте
+  actor.addEventListener("click", () => playReaction(false));
 
-  // Нажатие на кнопку — реакция + переход на лист с барабаном
-  btn.addEventListener("click", () => triggerRaptor(true));
-});
-
-
-
-
-  
+  // Клик по кнопке — мощная реакция и переход на лист с барабаном
+  btn.addEventListener("click", () => playReaction(true));
+}); 
