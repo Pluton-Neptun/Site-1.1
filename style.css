@@ -1,4 +1,4 @@
-/* === ОСНОВНЫЕ СТИЛИ САЙТА И ФОНА === */
+/* === ЕДИНЫЙ ФОН НА ВЕСЬ ЭКРАН ДЛЯ ВСЕХ СТРАНИЦ === */
 * {
   box-sizing: border-box;
 }
@@ -12,23 +12,23 @@ body {
   align-items: center;
   font-family: Arial, sans-serif;
   color: #ffffff;
-  background: #111 url('images/background.jpg') no-repeat center center fixed;
+  background: #111 url('images/raptor.png') no-repeat center center fixed;
   background-size: cover;
 }
 
-/* === ЦЕНТРАЛЬНАЯ КАРТОЧКА ФОРМЫ === */
+/* === ЦЕНТРАЛЬНАЯ КАРТОЧКА ФОРМЫ (index.html) === */
 .form-container {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 420px;
   padding: 32px 28px;
-  background: rgba(18, 18, 22, 0.72);
+  background: rgba(18, 18, 22, 0.78);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 18px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
 }
 
 .form-container h1 {
@@ -39,7 +39,7 @@ body {
   font-weight: 700;
 }
 
-.form-group { 
+.form-group {
   margin-bottom: 14px;
 }
 
@@ -85,7 +85,7 @@ body {
   background: #0062cc;
 }
 
-.enter-btn { 
+.enter-btn {
   display: block;
   width: 100%;
   padding: 11px;
@@ -103,87 +103,26 @@ body {
 .enter-btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: #ffffff;
-} 
-
-/* === ЛЕВАЯ ЗОНА С ВЕЛОЦЕРАПТОРОМ === */
-.raptor-stage {
-  position: fixed;
-  left: 24px;
-  bottom: 24px;
-  width: 380px;
-  height: 92vh;
-  pointer-events: none;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
 }
 
-.raptor-actor {
-  position: relative;
-  width: 440px;
-  max-width: 42vw;
-  margin-bottom: -18px;
-  pointer-events: auto;
-  cursor: pointer;
-  transform-origin: bottom center;
-  transition: filter 0.3s ease, transform 0.4s ease;
-  z-index: 60;
-}
-
-.raptor-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.85));
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* Плашка реакции */
-.raptor-status-card {
-  position: relative;
-  z-index: 70;
-  background: rgba(18, 22, 28, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 10px;
-  padding: 8px 14px;
-  margin-bottom: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-  pointer-events: auto;
-}
-
-.status-phrase {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.status-sub {
-  color: #cbd5e1;
-  font-size: 11px;
-  margin-top: 2px;
-}
-
-/* Крупная кнопка «БАРАБАН ИНВЕСТИЦИЙ» */
+/* === КНОПКА «БАРАБАН ИНВЕСТИЦИЙ» В ЛЕВОМ НИЖНЕМ УГЛУ === */
 .big-roulette-btn {
-  position: relative;
+  position: fixed;
+  left: 36px;
+  bottom: 32px;
   z-index: 70;
-  width: 290px;
-  padding: 14px 20px;
+  width: 310px;
+  padding: 16px 22px;
   background: linear-gradient(180deg, #163a63 0%, #0b1f3a 100%);
   border: 2.5px solid #ffffff;
   border-radius: 14px;
   color: #ffffff;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  cursor: pointer;
-  pointer-events: auto;
+  cursor: pointer; 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
@@ -197,139 +136,17 @@ body {
 .big-roulette-btn:active {
   transform: scale(0.98);
 }
-
-/* === СПЕЦЭФФЕКТЫ ДЛЯ РЕАКЦИЙ === */
-.fx-fire {
-  display: none;
-  position: absolute;
-  top: 22%;
-  left: 72%;
-  width: 340px;
-  height: 130px;
-  background: radial-gradient(ellipse at left, #fff7ed 0%, #facc15 25%, #f97316 55%, rgba(220, 38, 38, 0) 80%);
-  clip-path: polygon(0% 42%, 100% 5%, 88% 50%, 100% 95%, 0% 58%);
-  filter: blur(2px);
-  animation: firePulse 0.12s infinite alternate;
-  pointer-events: none;
-}
-
-.fx-laser {
-  display: none;
-  position: absolute;
-  top: 14%;
-  left: 58%;
-  width: 55vw;
-  height: 6px;
-  background: linear-gradient(90deg, #fff 0%, #ef4444 20%, rgba(239, 68, 68, 0) 100%);
-  box-shadow: 0 0 16px #ef4444, 0 0 30px #dc2626;
-  transform: rotate(10deg);
-  transform-origin: left center;
-  pointer-events: none;
-}
-
-.fx-skis {
-  display: none;
-  position: absolute;
-  bottom: 6px;
-  left: 10%;
-  width: 85%;
-  height: 12px;
-  background: linear-gradient(90deg, #0284c7, #38bdf8, #e0f2fe);
-  border-radius: 0 20px 6px 6px;
-  box-shadow: 0 6px 14px rgba(56, 189, 248, 0.7);
-  transform: rotate(-4deg);
-}
-
-/* === 10 ПОЗИЦИЙ РЕАКЦИЙ === */
-.react-1 { 
-  position: fixed !important;
-  bottom: 20px;
-  left: -450px;
-  animation: animRunField 2.4s linear forwards;
-}
-
-.react-2 { 
-  position: fixed !important;
-  top: 5%;
-  left: -450px;
-  animation: animSkiField 2.8s ease-in-out forwards;
-}
-.react-2 .fx-skis { display: block; }
-
-.react-3 .fx-fire { display: block; } 
-.react-3 .raptor-img { filter: drop-shadow(0 0 35px rgba(249, 115, 22, 0.85)) brightness(1.15); }
-
-.react-4 { animation: animAngry 0.1s infinite; } 
-.react-4 .raptor-img { filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.9)) sepia(0.5) saturate(3) hue-rotate(-35deg); }
-
-.react-5 { animation: animJumpFlip 1.6s ease-in-out; } 
-.react-6 { animation: animDance 0.3s infinite alternate; } 
-.react-7 { transform: scaleY(0.75) scaleX(1.12) translateX(35px); }
-
-.react-8 { animation: animSpin 0.85s ease-in-out 2; } 
-.react-8 .raptor-img { filter: drop-shadow(0 0 35px rgba(250, 204, 21, 0.95)) saturate(1.8); }
-
-.react-9 .fx-laser { display: block; } 
-.react-10 { transform: scaleX(-1) rotate(-8deg) translateX(-40px); } 
-
-@keyframes firePulse {
-  from { transform: scaleX(0.92) scaleY(0.9); }
-  to   { transform: scaleX(1.12) scaleY(1.15); }
-}
-
-@keyframes animAngry {
-  0%   { transform: translate(-4px, 3px) rotate(-1.5deg); }
-  50%  { transform: translate(4px, -3px) rotate(1.5deg); }
-  100% { transform: translate(-3px, -2px) rotate(0deg); }
-}
-
-@keyframes animRunField {
-  0%   { left: -420px; transform: translateY(0) rotate(4deg); }
-  25%  { transform: translateY(-28px) rotate(-2deg); }
-  50%  { transform: translateY(0) rotate(4deg); }
-  75%  { transform: translateY(-28px) rotate(-2deg); }
-  100% { left: 105vw; transform: translateY(0) rotate(4deg); }
-}
-
-@keyframes animSkiField {
-  0%   { top: 5%; left: -420px; transform: rotate(14deg); }
-  35%  { top: 38%; left: 32vw; transform: rotate(-10deg); }
-  70%  { top: 62%; left: 68vw; transform: rotate(15deg); }
-  100% { top: 78%; left: 105vw; transform: rotate(6deg); }
-}
-
-@keyframes animJumpFlip {
-  0%   { transform: translateY(0) rotate(0deg); }
-  50%  { transform: translateY(-240px) rotate(360deg); }
-  100% { transform: translateY(0) rotate(720deg); }
-}
-
-@keyframes animDance {
-  from { transform: translateY(0) rotate(-5deg) scale(1.02); }
-  to   { transform: translateY(-22px) rotate(5deg) scale(1.02); }
-}
-
-@keyframes animSpin {
-  from { transform: rotate(0deg) scale(1.05); }
-  to   { transform: rotate(360deg) scale(1.05); }
-}
-
+ 
 @media (max-width: 900px) {
   body {
     flex-direction: column;
   }
-  .raptor-stage {
+  .big-roulette-btn {
     position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    align-items: center;
+    left: auto;
+    bottom: auto;
     margin-top: 20px;
-    padding-bottom: 30px;
-  }
-  .raptor-actor {
-    width: 280px;
-    max-width: 80vw;
+    width: 100%;
+    max-width: 420px;
   }
 }

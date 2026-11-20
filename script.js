@@ -117,62 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const actor = document.getElementById("raptorActor");
   const btn = document.getElementById("rouletteBtn");
-  const phraseEl = document.getElementById("raptorPhrase");
-  const numEl = document.getElementById("raptorReactionNum");
-  if (!actor || !btn) return;
-
-  const reactions = [
-    { cls: "react-1",  phrase: "Бегу срывать куш! 🦖",       title: "Реакция №1: Спринт по полю" },
-    { cls: "react-2",  phrase: "Лыжный слалом по сайту! 🎿", title: "Реакция №2: Горные лыжи" },
-    { cls: "react-3",  phrase: "Огненный джекпот! 🔥",       title: "Реакция №3: Огонь изо рта" },
-    { cls: "react-4",  phrase: "Р-Р-Р! Ставки вверх! 🦖",    title: "Реакция №4: Ярость" },
-    { cls: "react-5",  phrase: "Прыжок хищника! ⚡",         title: "Реакция №5: Сальто вверх" },
-    { cls: "react-6",  phrase: "Танцуем на профит! 💃",      title: "Реакция №6: Танец победы" },
-    { cls: "react-7",  phrase: "Выслеживаю крупный банк...", title: "Реакция №7: Засада" },
-    { cls: "react-8",  phrase: "Время инвестиций ₸! 💰",     title: "Реакция №8: Золотой вихрь" },
-    { cls: "react-9",  phrase: "Прицел на максимум! 🎯",     title: "Реакция №9: Лазер из глаз" },
-    { cls: "react-10", phrase: "Разворот хвостом! 🌪️",       title: "Реакция №10: Удар хвостом" }
-  ];
-
-  let deck = [];
-  let lastIdx = -1;
-  let timer = null;
-
-  function pickNextReaction() {
-    if (deck.length === 0) {
-      deck = reactions.map((_, i) => i).sort(() => Math.random() - 0.5);
-      if (deck[0] === lastIdx) {
-        [deck[0], deck[1]] = [deck[1], deck[0]];
-      }
-    }
-    const idx = deck.shift();
-    lastIdx = idx;
-    return reactions[idx];
+  if (btn) {
+    btn.addEventListener("click", () => {
+      window.location.href = "roulette.html";
+    });
   }
-
-  function playReaction(goToRoulette = false) {
-    clearTimeout(timer);
-    reactions.forEach(r => actor.classList.remove(r.cls));
-    void actor.offsetWidth; // сброс анимации
-
-    const current = pickNextReaction();
-    actor.classList.add(current.cls);
-    phraseEl.textContent = current.phrase;
-    numEl.textContent = current.title;
-
-    timer = setTimeout(() => {
-      reactions.forEach(r => actor.classList.remove(r.cls));
-      if (goToRoulette) {
-        window.location.href = "roulette.html";
-      }
-    }, 2500);
-  }
-
-  // Клик по велоцераптору — смена реакции на месте
-  actor.addEventListener("click", () => playReaction(false));
-
-  // Клик по кнопке — мощная реакция и переход на лист с барабаном
-  btn.addEventListener("click", () => playReaction(true));
-}); 
+});
