@@ -170,3 +170,164 @@ button:hover {
     border-color: #ffffff;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
+
+
+
+
+/* Строка с кнопкой и велоцераптором */
+.raptor-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+}
+
+.raptor-main-btn {
+  flex: 1;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.raptor-main-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #ffffff;
+}
+
+.raptor-box {
+  position: relative;
+  width: 76px;
+  height: 54px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 9999;
+  transition: transform 0.2s;
+}
+
+.raptor-box:hover {
+  transform: scale(1.08);
+}
+
+.raptor-skis, .raptor-fire, .raptor-laser {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.raptor-bubble {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.92);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.5);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.raptor-bubble.show { opacity: 1; }
+
+/* --- 10 ПОЗИЦИЙ РЕАКЦИЙ --- */
+
+/* 1. Бежит по всему экрану */
+.react-run {
+  position: fixed !important;
+  bottom: 30px;
+  left: -100px;
+  animation: raptorRunAcross 2.2s linear forwards;
+}
+.react-run .raptor-leg-front { animation: legSwing 0.18s infinite alternate; transform-origin: 68px 64px; }
+.react-run .raptor-leg-back  { animation: legSwing 0.18s infinite alternate-reverse; transform-origin: 56px 64px; }
+
+/* 2. Катается на лыжах по всему полю сайта */
+.react-ski {
+  position: fixed !important;
+  top: 15%;
+  left: -120px;
+  animation: raptorSkiField 2.6s ease-in-out forwards;
+}
+.react-ski .raptor-skis { opacity: 1; }
+
+/* 3. Огонь изо рта */
+.react-fire .raptor-fire { opacity: 1; animation: fireFlicker 0.15s infinite alternate; }
+.react-fire .raptor-jaw  { transform: rotate(22deg); transform-origin: 98px 41px; }
+.react-fire .raptor-eye  { fill: #ef4444; }
+
+/* 4. Злится и рычит */
+.react-angry { animation: raptorShake 0.12s infinite; }
+.react-angry .raptor-body, .react-angry .raptor-tail { fill: #dc2626; }
+.react-angry .raptor-jaw { transform: rotate(25deg); transform-origin: 98px 41px; }
+
+/* 5. Высокий прыжок с сальто */
+.react-jump { animation: raptorJumpFlip 1.4s ease-in-out; }
+
+/* 6. Танец победителя */
+.react-dance { animation: raptorDance 0.35s infinite alternate; }
+.react-dance .raptor-arm { animation: armWave 0.2s infinite alternate; transform-origin: 84px 54px; }
+
+/* 7. Крадётся в засаде */
+.react-stealth { transform: translateX(-45px) scaleY(0.78) skewX(12deg); transition: transform 0.6s; }
+
+/* 8. Золотая лихорадка (крутится от радости) */
+.react-rich { animation: raptorSpin 0.8s ease-in-out 2; }
+.react-rich .raptor-eye { fill: #4ade80; }
+
+/* 9. Лазер из глаз */
+.react-laser .raptor-laser { opacity: 1; animation: fireFlicker 0.1s infinite alternate; }
+.react-laser .raptor-eye { fill: #ef4444; }
+
+/* 10. Удар хвостом */
+.react-tailwhip { transform: scaleX(-1) rotate(-15deg); transition: transform 0.4s; }
+
+@keyframes legSwing {
+  from { transform: rotate(-32deg); }
+  to   { transform: rotate(32deg); }
+}
+@keyframes fireFlicker {
+  from { transform: scaleX(0.92); }
+  to   { transform: scaleX(1.15); }
+}
+@keyframes raptorShake {
+  0% { transform: translate(-3px, 2px) rotate(-3deg); }
+  50% { transform: translate(3px, -2px) rotate(3deg); }
+  100% { transform: translate(-2px, -2px) rotate(0deg); }
+}
+@keyframes raptorJumpFlip {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-160px) rotate(360deg) scale(1.3); }
+  100% { transform: translateY(0) rotate(720deg); }
+}
+@keyframes raptorDance {
+  from { transform: translateY(0) rotate(-8deg); }
+  to   { transform: translateY(-14px) rotate(8deg); }
+}
+@keyframes armWave {
+  from { transform: rotate(-35deg); }
+  to   { transform: rotate(35deg); }
+}
+@keyframes raptorSpin {
+  from { transform: rotate(0deg) scale(1.15); }
+  to   { transform: rotate(360deg) scale(1.15); }
+}
+@keyframes raptorRunAcross {
+  0%   { left: -80px; transform: scale(1.3); }
+  100% { left: 105vw; transform: scale(1.3); }
+}
+@keyframes raptorSkiField {
+  0%   { top: 12%; left: -90px; transform: rotate(15deg) scale(1.3); }
+  35%  { top: 45%; left: 45vw; transform: rotate(-12deg) scale(1.4); }
+  70%  { top: 75%; left: 75vw; transform: rotate(18deg) scale(1.4); }
+  100% { top: 88%; left: 108vw; transform: rotate(5deg) scale(1.3); }
+}

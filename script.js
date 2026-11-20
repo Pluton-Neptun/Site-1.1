@@ -116,6 +116,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("rouletteBtn");
+  const raptor = document.getElementById("raptorCompanion");
+  const bubble = document.getElementById("raptorBubble");
+  if (!btn || !raptor) return;
+
+  const reactions = [
+    { cls: "react-run",      text: "Бегу к банку!" },
+    { cls: "react-ski",      text: "Лыжный слалом!" },
+    { cls: "react-fire",     text: "Огненный куш!" },
+    { cls: "react-angry",    text: "Р-Р-Р! Ставки вверх!" },
+    { cls: "react-jump",     text: "Сальто хищника!" },
+    { cls: "react-dance",    text: "Танцуем на профит!" },
+    { cls: "react-stealth",  text: "Охота за джекпотом..." },
+    { cls: "react-rich",     text: "Время инвестиций ₸!" },
+    { cls: "react-laser",    text: "Лазерный прицел!" },
+    { cls: "react-tailwhip", text: "Удар хвостом!" }
+  ];
+
+  let deck = [];
+  let lastIndex = -1;
+  let resetTimer = null;
+
+  // Берём случайную реакцию без повторения предыдущей
+  function getNextReaction() {
+    if (deck.length === 0) {
+      deck = reactions.map((_, i) => i).sort(() => Math.random() - 0.5);
+      if (deck[0] === lastIndex) {
+        [deck[0], deck[1]] = [deck[1], deck[0]];
+      }
+    }
+    const idx = deck.shift();
+    lastIndex = idx;
+    return reactions[idx];
+  }
+
+  function triggerRaptor(redirectAfter = false) {
+    clearTimeout(resetTimer);
+    reactions.forEach(r => raptor.classList.remove(r.cls));
+    void raptor.offsetWidth; // перезапуск CSS-анимации
+
+    const chosen = getNextReaction();
+    raptor.classList.add(chosen.cls);
+    bubble.textContent = chosen.text;
+    bubble.classList.add("show");
+
+    resetTimer = setTimeout(() => {
+      reactions.forEach(r => raptor.classList.remove(r.cls));
+      bubble.classList.remove("show");
+      if (redirectAfter) {
+        window.location.href = "roulette.html";
+      }
+    }, 2300);
+  }
+
+  // Нажатие на велоцераптора — тест реакций прямо на странице
+  raptor.addEventListener("click", () => triggerRaptor(false));
+
+  // Нажатие на кнопку — реакция + переход на лист с барабаном
+  btn.addEventListener("click", () => triggerRaptor(true));
+});
+
 
 
 

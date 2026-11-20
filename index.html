@@ -45,7 +45,66 @@
             <button type="submit">Отправить заявку</button>
             
             <a href="table.html" class="enter-btn">Вход к списку участников</a>
-            <a href="roulette.html" class="btn-secondary">Барабан инвестиций</a>
+            <div class="raptor-row">
+  <button type="button" id="rouletteBtn" class="raptor-main-btn">
+    Барабан инвестиций
+  </button>
+
+  <!-- Тело велоцераптора рядом с кнопкой -->
+  <div id="raptorCompanion" class="raptor-box" title="Нажми на велоцераптора!">
+    <svg id="raptorSvg" viewBox="0 0 140 100" width="76" height="54">
+      <!-- Лыжи (появляются в реакции №2) -->
+      <g class="raptor-skis">
+        <path d="M15 92 L115 92 Q125 92 128 84" stroke="#38bdf8" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <line x1="78" y1="56" x2="62" y2="90" stroke="#e2e8f0" stroke-width="2.5"/>
+      </g>
+
+      <!-- Хвост -->
+      <path class="raptor-tail" d="M48 56 Q22 52 4 42 Q22 62 48 64 Z" fill="#16a34a"/>
+
+      <!-- Задняя лапа -->
+      <g class="raptor-leg-back">
+        <path d="M56 64 L50 80 L60 88 L54 90" stroke="#15803d" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Туловище -->
+      <path class="raptor-body" d="M45 56 Q62 42 86 44 Q94 54 84 66 Q60 68 45 62 Z" fill="#22c55e"/>
+      <!-- Полосы на спине -->
+      <path d="M54 50 L58 56 M64 47 L68 54 M74 46 L77 53" stroke="#14532d" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Передняя лапка -->
+      <path class="raptor-arm" d="M84 54 L95 60 L92 65" stroke="#16a34a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+      <!-- Передняя лапа -->
+      <g class="raptor-leg-front">
+        <path d="M68 64 L64 80 L74 88 L68 90" stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Шея и голова -->
+      <g class="raptor-head-group">
+        <!-- Верхняя челюсть и череп -->
+        <path d="M82 46 Q92 26 106 24 L132 28 Q134 34 128 37 L104 37 L96 48 Z" fill="#22c55e"/>
+        <!-- Зубы -->
+        <path d="M108 37 L110 41 L113 37 L116 41 L119 37 L122 41 L125 37" stroke="#fff" stroke-width="1.5" fill="none"/>
+        <!-- Нижняя челюсть (двигается при рыке и огне) -->
+        <path class="raptor-jaw" d="M98 41 L126 40 Q124 46 100 46 Z" fill="#16a34a"/>
+        <!-- Глаз -->
+        <circle class="raptor-eye" cx="105" cy="30" r="3" fill="#facc15"/>
+        <circle cx="106" cy="30" r="1.2" fill="#000"/>
+      </g>
+
+      <!-- Огонь изо рта (появляется в реакции №3) -->
+      <g class="raptor-fire">
+        <path d="M126 38 Q155 24 195 32 Q170 40 198 46 Q155 54 126 42 Z" fill="#f97316"/>
+        <path d="M126 39 Q148 31 172 38 Q148 46 126 41 Z" fill="#facc15"/>
+      </g>
+
+      <!-- Лазер из глаз (появляется в реакции №9) -->
+      <line class="raptor-laser" x1="106" y1="30" x2="260" y2="55" stroke="#ef4444" stroke-width="3"/>
+    </svg>
+    <span id="raptorBubble" class="raptor-bubble"></span>
+  </div>
+</div>
         </form>
     </div> 
 
