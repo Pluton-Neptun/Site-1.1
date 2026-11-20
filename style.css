@@ -216,54 +216,54 @@ body {
 /* === АНИМАЦИЯ GIF-САМОЛЁТОВ И ДИНОЗАВРОВ ПРИ КЛИКЕ === */
 .fx-gif-plane {
   position: fixed;
-  left: -240px;
-  width: 190px; /* средний размер самолёта */
+  left: -380px;
+  width: 340px; /* средний размер самолёта */
   height: auto;
   z-index: 9999;
   pointer-events: none;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.65));
-  animation: flyPlaneAcross 2.6s linear forwards;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.7));
+  animation: flyPlaneAcross 2.8s linear forwards;
 }
 
 .fx-gif-dino {
   position: fixed;
-  bottom: 24px;
-  left: -260px;
-  width: 210px; /* средний размер динозавра */
+  bottom: 10px;
+  left: -460px;
+  width: 420px; /* средний размер динозавра */
   height: auto;
   z-index: 9999;
   pointer-events: none;
-  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.75));
-  animation: runDinoAcross 2.8s linear forwards;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.8));
+  animation: runDinoAcross 3.1s linear forwards;
 }
 
 @keyframes flyPlaneAcross {
   0% {
-    left: -240px;
+    left: -380px;
     transform: translateY(0) rotate(-4deg);
   }
   50% {
-    transform: translateY(-28px) rotate(2deg);
+    transform: translateY(-35px) rotate(2deg);
   }
   100% {
     left: 108vw;
-    transform: translateY(-10px) rotate(-3deg);
+    transform: translateY(-12px) rotate(-3deg);
   }
 }
 
 @keyframes runDinoAcross {
   0% {
-    left: -260px;
+    left: -460px;
     transform: translateY(0);
   }
   25% {
-    transform: translateY(-12px);
+    transform: translateY(-16px);
   }
   50% {
     transform: translateY(0);
   }
   75% {
-    transform: translateY(-12px);
+    transform: translateY(-16px);
   }
   100% {
     left: 108vw;
