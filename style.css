@@ -1,178 +1,109 @@
-/* Убираем стандартные отступы и настраиваем фон */
+/* === ОСНОВНЫЕ СТИЛИ САЙТА И ФОНА === */
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #ffffff; /* Белый цвет текста */
-    background-image: url('images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background: #111 url('images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
-/* Основной контейнер для формы с эффектом размытия */
-
+/* === ЦЕНТРАЛЬНАЯ КАРТОЧКА ФОРМЫ === */
 .form-container {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(50px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    padding: 60px;
-    
-    /* МЕНЯЕМ ЭТИ ДВЕ СТРОКИ: */
-    max-width: 500px; /* Было 300px. 600px даст тексту свободно дышать */
-    width: 90%;       /* Было 50%. 90% сделает так, чтобы на мобилках форма смотрелась хорошо, а на ПК не росла больше 600px */
-    
-    box-shadow: 0 8px 72px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 28px;
+  background: rgba(18, 18, 22, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* Стили для заголовка */
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    font-weight: 600;
+.form-container h1 {
+  margin: 0 0 22px;
+  font-size: 22px;
+  line-height: 1.3;
+  text-align: center;
+  font-weight: 700;
 }
 
-/* Группа для метки и поля ввода */
-.form-group {
-    margin-bottom: 25px;
+.form-group { 
+  margin-bottom: 14px;
 }
 
-/* Стили для текста над полем ввода */
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-    font-weight: 500;
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #e2e8f0;
 }
 
-/* Стили для самих полей ввода (окошек) */
-input[type="text"],
-input[type="tel"],
-input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 1rem;
-    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
 }
 
-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+.form-group input:focus {
+  border-color: #38bdf8;
+  background: rgba(255, 255, 255, 0.14);
 }
 
-/* Стили для кнопки отправки */
-button {
-    width: 100%;
-    padding: 15px;
-    background: #007bff;
-    border: none;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.form-container button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-button:hover {
-    background-color: #0056b3;
+.form-container button[type="submit"]:hover {
+  background: #0062cc;
 }
 
-/* --- Стили для страницы с таблицей --- */
-
-/* Контейнер для таблицы (делаем его шире, чем форму) */
-.table-container {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 40px;
-    max-width: 700px; /* Таблица должна быть шире формы */
-    width: 90%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+.enter-btn { 
+  display: block;
+  width: 100%;
+  padding: 11px;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.2s, border-color 0.2s;
 }
 
-/* Стили самой таблицы */
-.styled-table {
-    width: 100%;
-    border-collapse: collapse; /* Убирает двойные рамки */
-    margin-top: 10px;
-    font-size: 1.1rem;
-}
-
-/* Шапка таблицы */
-.styled-table th {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    text-align: left;
-    padding: 12px 15px;
-    font-weight: 600;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Ячейки строк */
-.styled-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.9);
-    height: 24px; /* Фиксированная высота для пустых строк */
-}
-
-/* Эффект подсветки строки при наведении мыши */
-.styled-table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Кнопка возврата назад */
-.back-btn {
-    display: inline-block;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.back-btn:hover {
-    color: #ffffff;
-}
-
-/* --- Стили для кнопки "Вход" --- */
-.enter-btn {
-    display: block;          /* Превращаем в блочный элемент */
-    width: 100%;             /* Растягиваем на всю ширину формы */
-    padding: 15px;           /* Отступы как у кнопки отправки */
-    margin-top: 20px;        /* Отступ сверху от кнопки "Отправить" */
-    
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
-    color: #ffffff;
-    text-decoration: none;   /* Убираем подчеркивание */
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-align: center;      /* Центрируем текст */
-    box-sizing: border-box;  /* Чтобы padding не увеличивал ширину */
-    transition: all 0.3s ease;
-}
-
-.enter-btn:hover { 
-    background: rgba(255, 255, 255, 0.15);
-    border-color: #ffffff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-}
-
-
-
+.enter-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+} 
 
 /* === ЛЕВАЯ ЗОНА С ВЕЛОЦЕРАПТОРОМ === */
 .raptor-stage {
@@ -181,7 +112,7 @@ button:hover {
   bottom: 24px;
   width: 380px;
   height: 92vh;
-  pointer-events: none; /* не мешает кликать по центральной форме */
+  pointer-events: none;
   z-index: 50;
   display: flex;
   flex-direction: column;
@@ -310,17 +241,14 @@ button:hover {
 }
 
 /* === 10 ПОЗИЦИЙ РЕАКЦИЙ === */
-
-/* 1. Бежит по всему полю сайта */
-.react-1 {
+.react-1 { 
   position: fixed !important;
   bottom: 20px;
   left: -450px;
   animation: animRunField 2.4s linear forwards;
 }
 
-/* 2. Катается на лыжах по всему сайту */
-.react-2 {
+.react-2 { 
   position: fixed !important;
   top: 5%;
   left: -450px;
@@ -328,32 +256,21 @@ button:hover {
 }
 .react-2 .fx-skis { display: block; }
 
-/* 3. Огонь изо рта */
-.react-3 .fx-fire { display: block; }
+.react-3 .fx-fire { display: block; } 
 .react-3 .raptor-img { filter: drop-shadow(0 0 35px rgba(249, 115, 22, 0.85)) brightness(1.15); }
 
-/* 4. Ярость (рычит и трясётся) */
-.react-4 { animation: animAngry 0.1s infinite; }
+.react-4 { animation: animAngry 0.1s infinite; } 
 .react-4 .raptor-img { filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.9)) sepia(0.5) saturate(3) hue-rotate(-35deg); }
 
-/* 5. Гигантский прыжок с сальто */
-.react-5 { animation: animJumpFlip 1.6s ease-in-out; }
-
-/* 6. Танец победителя */
-.react-6 { animation: animDance 0.3s infinite alternate; }
-
-/* 7. Засада (пригнулся и высматривает добычу) */
+.react-5 { animation: animJumpFlip 1.6s ease-in-out; } 
+.react-6 { animation: animDance 0.3s infinite alternate; } 
 .react-7 { transform: scaleY(0.75) scaleX(1.12) translateX(35px); }
 
-/* 8. Золотая лихорадка (кружится от джекпота) */
-.react-8 { animation: animSpin 0.85s ease-in-out 2; }
+.react-8 { animation: animSpin 0.85s ease-in-out 2; } 
 .react-8 .raptor-img { filter: drop-shadow(0 0 35px rgba(250, 204, 21, 0.95)) saturate(1.8); }
 
-/* 9. Лазер из глаз */
-.react-9 .fx-laser { display: block; }
-
-/* 10. Разворот и удар хвостом */
-.react-10 { transform: scaleX(-1) rotate(-8deg) translateX(-40px); }
+.react-9 .fx-laser { display: block; } 
+.react-10 { transform: scaleX(-1) rotate(-8deg) translateX(-40px); } 
 
 @keyframes firePulse {
   from { transform: scaleX(0.92) scaleY(0.9); }
@@ -397,8 +314,10 @@ button:hover {
   to   { transform: rotate(360deg) scale(1.05); }
 }
 
-/* Адаптация под узкие экраны (телефоны) */
 @media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
   .raptor-stage {
     position: relative;
     left: 0;

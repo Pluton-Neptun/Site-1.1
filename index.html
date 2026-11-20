@@ -45,30 +45,28 @@
             <button type="submit">Отправить заявку</button>
             
             <a href="table.html" class="enter-btn">Вход к списку участников</a>
-           <!-- Левая зона с гигантским велоцераптором и кнопкой барабана -->
-<div class="raptor-stage" id="raptorStage">
-  <div class="raptor-actor" id="raptorActor" title="Нажми на велоцераптора!">
-    <!-- Реалистичное изображение велоцераптора -->
-    <img src="images/raptor.png" alt="Велоцераптор" class="raptor-img" id="raptorImg">
+        </form>
+    </div>
 
-    <!-- Эффект огня изо рта (Реакция №3) -->
-    <div class="fx-fire" id="fxFire"></div>
+    <!-- Левая зона с гигантским велоцераптором и кнопкой барабана (снаружи формы) -->
+    <div class="raptor-stage" id="raptorStage">
+        <div class="raptor-actor" id="raptorActor" title="Нажми на велоцераптора!">
+            <img src="images/raptor.png" alt="Велоцераптор" class="raptor-img" id="raptorImg">
+            <div class="fx-fire" id="fxFire"></div>
+            <div class="fx-laser" id="fxLaser"></div>
+            <div class="fx-skis" id="fxSkis"></div>
+        </div>
 
-    <!-- Эффект лазера из глаз (Реакция №9) -->
-    <div class="fx-laser" id="fxLaser"></div>
+        <div class="raptor-status-card" id="raptorStatusCard">
+            <div class="status-phrase" id="raptorPhrase">Р-Р-Р! Ставки вверх! 🦖</div>
+            <div class="status-sub" id="raptorReactionNum">Реакция №4: Ярость</div>
+        </div>
 
-    <!-- Эффект лыж под лапами (Реакция №2) -->
-    <div class="fx-skis" id="fxSkis"></div>
-  </div>
+        <button type="button" id="rouletteBtn" class="big-roulette-btn">
+            БАРАБАН<br>ИНВЕСТИЦИЙ
+        </button>
+    </div>
 
-  <!-- Плашка текущего настроения/реакции -->
-  <div class="raptor-status-card" id="raptorStatusCard">
-    <div class="status-phrase" id="raptorPhrase">Р-Р-Р! Ставки вверх! 🦖</div>
-    <div class="status-sub" id="raptorReactionNum">Реакция №4: Ярость</div>
-  </div>
-
-  <!-- Крупная кнопка перехода к барабану инвестиций -->
-  <button type="button" id="rouletteBtn" class="big-roulette-btn">
-    БАРАБАН<br>ИНВЕСТИЦИЙ
-  </button>
-</div> 
+    <script src="script.js"></script>
+</body>
+</html>
